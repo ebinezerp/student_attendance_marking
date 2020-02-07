@@ -1,0 +1,31 @@
+ion-card{
+    color:white;
+}
+
+.card-header-text{
+    color: white;
+    font-size: 30px;
+}
+.card-header-icon{
+    display: block;
+    color:white;
+    align-self: center;
+}
+ion-card-header{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+ion-label{
+    font-size: 20px;
+}
+ion-input{
+    border-bottom:1px black solid;
+}
+
+ion-button{
+    --background: white;
+    color:blue;
+    text-align: center;
+}

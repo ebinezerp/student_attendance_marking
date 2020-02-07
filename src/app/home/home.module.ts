@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { HomePage } from './home.page';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   imports: [
@@ -16,10 +17,13 @@ import { HomePage } from './home.page';
     RouterModule.forChild([
       {
         path: '',
+        component: SigninComponent
+      },{
+        path: 'qrscreen',
         component: HomePage
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, SigninComponent]
 })
 export class HomePageModule {}

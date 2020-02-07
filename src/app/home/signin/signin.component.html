@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color='primary'>
+  <ion-card>
+    <ion-card-header class='ion-text-center'>
+      <ion-text class='card-header-text'>Login</ion-text>
+      <ion-icon name='contact' size='large' class='card-header-icon'></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+      <form (submit)='submitted()'>
+        <ion-label>Center Code</ion-label>
+        <ion-input type='text' name='centerCode' [(ngModel)]='employee.centerCode'></ion-input>
+        <ion-label>Employee Code</ion-label>
+        <ion-input type='text' name='empCode' [(ngModel)]='employee.empCode'></ion-input>
+        <ion-label>Password</ion-label>
+        <ion-input type='password' name='password' [(ngModel)]='employee.password'></ion-input>
+        <div class='d-flex justify-content-center ion-padding'>
+          <ion-button type='submit'>Submit</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
