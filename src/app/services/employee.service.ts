@@ -20,8 +20,13 @@ export class EmployeeService {
     return this.httpClient.get<Batch[]>('http://localhost:8800/faculty/' + empCode + '/batches');
   }
 
-  activate(batchSessions: BatchSession[] ): Observable<boolean> {
-    return this.httpClient.post<boolean>('http://localhost:8880/faculty/activate', batchSessions);
+  activate(batchSessions: BatchSession[], batchCode: string ): Observable<boolean> {
+    console.log(batchSessions);
+    return this.httpClient.post<boolean>('http://localhost:8800/faculty/activate', batchSessions,{
+      params:{
+        batchCode: batchCode
+      }
+    });
   }
 
 }

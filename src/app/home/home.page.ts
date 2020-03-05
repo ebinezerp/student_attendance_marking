@@ -12,7 +12,7 @@ import { EmployeeService } from '../services/employee.service';
 export class HomePage {
   elementType: 'url' | 'canvas' | 'img' = 'img';
   value: string;
-  batchCode: string;
+  batch: Batch;
   date: string = new Date().getDate().toString();
   time: string = new Date().getTime().toString();
 
@@ -34,16 +34,21 @@ export class HomePage {
   }
 
   generate() {
-    this.value = (this.batchCode + this.date + this.time);
-    const batchSession = new BatchSession();
-    batchSession.attedanceCode = this.value;
-    batchSession.sessionId  = '1.4';
-    batchSession.batch = new Batch();
-    batchSession.batch.batchCode = this.batchCode;
+    
+    this.value = (this.batch.batchCode + this.date + this.time);
+    console.log(this.value);
+    const batchSessions = this.batch.batchSessions;
+    console.log(batchSessions);
+    for (const batchSession of batchSessions) {
+      batchSession.attendanceCode = this.value;
+    };
 
-    let batchSessions: BatchSession[] = [];
-    batchSessions.push(batchSession);
+    console.log(batchSessions[0]);
 
-    this.employeeService.activate(batchSessions);
+    this.employeeService.activate(batchSessions, this.batch.batchCode).subscribe(
+      (result) =>{
+        console.log(result);
+      }
+    );
   }
 }

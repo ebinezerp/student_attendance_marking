@@ -8,8 +8,19 @@
 
 <ion-content>
   <div>
-    <input type="text" [(ngModel)]='batchCode' name="" id="">
+    <!-- <input type="text" [(ngModel)]='batchCode' name="" id=""> -->
+
+
+    <select name="batchCode" [(ngModel)]="batch">
+      <option [ngValue]="null" disabled>Select Batch</option>
+      <option *ngFor="let batch of batches" [ngValue]="batch">
+       {{ batch.batchCode }}
+      </option>
+    </select>
+
     <button (click)='generate()'>Generate</button></div>
+
+
   <ngx-qrcode *ngIf="value" [qrc-element-type]="elementType" [qrc-value] = "value">
   </ngx-qrcode>
 </ion-content>
