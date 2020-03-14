@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Today Batches
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,18 +9,53 @@
 <ion-content>
   <div>
     <!-- <input type="text" [(ngModel)]='batchCode' name="" id=""> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class='text-center'>
+           Today Batches
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class='text-center'>
+          Batch Code
+        </ion-col>
+        <ion-col class='text-center'>
+          Status
+        </ion-col>
+      </ion-row>
+      <span *ngFor="let batch of batches">
+        <ion-row *ngIf="batch.batchSessions.length>0 && !batch.batchSessions[0].triggerd">
+          <ion-col size="5" class='text-center'>{{batch.batchCode}}</ion-col>
+          <ion-col class='text-center'><a [routerLink]="['/generate']" [queryParams]="{'batchCode': batch.batchCode}" routerLinkActive="router-link-active" class='btn btn-primary'>Generate
+          </a></ion-col>
+        </ion-row>
+      </span>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class='text-center'>
+           Today Batches
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class='text-center'>
+          Batch Code
+        </ion-col>
+        <ion-col class='text-center'>
+          Status
+        </ion-col>
+      </ion-row>
+      <span *ngFor="let batch of batches">
+        <ion-row *ngIf="batch.batchSessions.length>0 && batch.batchSessions[0].triggerd">
+          <ion-col size="6" class='text-center'>{{batch.batchCode}}</ion-col>
+          <ion-col class='text-center'>Activated</ion-col>
+        </ion-row>
+      </span>
+    </ion-grid>
+
+  </div>
 
 
-    <select name="batchCode" [(ngModel)]="batch">
-      <option [ngValue]="null" disabled>Select Batch</option>
-      <option *ngFor="let batch of batches" [ngValue]="batch">
-       {{ batch.batchCode }}
-      </option>
-    </select>
-
-    <button (click)='generate()'>Generate</button></div>
-
-
-  <ngx-qrcode *ngIf="value" [qrc-element-type]="elementType" [qrc-value] = "value">
-  </ngx-qrcode>
+  
 </ion-content>

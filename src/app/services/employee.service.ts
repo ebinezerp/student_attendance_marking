@@ -10,13 +10,24 @@ import { Batch } from '../model/batch';
 })
 export class EmployeeService {
 
+  private batches: Batch[];
+
+
   constructor(private httpClient: HttpClient) {}
+
+  setBatches(batches: Batch[]): void {
+    this.batches = batches;
+  }
+  
+  getBatches(): Batch[] {
+    return this.batches;
+  }
 
   login(employee: Employee): Observable<Employee> {
     return this.httpClient.post<Employee>('http://localhost:8800/login/faculty', employee);
   }
 
-  batches(empCode: string): Observable<Batch[]> {
+  getBatchesByFaculty(empCode: string): Observable<Batch[]> {
     return this.httpClient.get<Batch[]>('http://localhost:8800/faculty/' + empCode + '/batches');
   }
 

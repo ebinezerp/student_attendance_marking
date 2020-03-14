@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon size='large' name="arrow-back-outline"></ion-icon>
+      <ion-text>Back</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ngx-qrcode *ngIf="value" [qrc-element-type]="elementType" [qrc-value]="value">
+  </ngx-qrcode>
+</ion-content>
