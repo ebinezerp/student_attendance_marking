@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Batch } from '../model/batch';
 import { EmployeeService } from '../services/employee.service';
 import { SessionLocation } from '../model/session-location';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-qr-generate-screen',
@@ -18,7 +19,7 @@ export class QrGenerateScreenComponent implements OnInit {
   time: string = new Date().getTime().toString();
   sessionLocation = new SessionLocation();
 
-  constructor(private activatedRoute: ActivatedRoute, private employeeService: EmployeeService) {
+  constructor(private activatedRoute: ActivatedRoute, private location: Location ,private employeeService: EmployeeService) {
     const batchCode = activatedRoute.snapshot.queryParamMap.get('batchCode');
     this.batch = employeeService.getBatches().find(batch => batch.batchCode === batchCode);
     this. value = this.batch.batchCode + this.date + this.time;
@@ -34,6 +35,10 @@ export class QrGenerateScreenComponent implements OnInit {
     this.employeeService.activate(batchSessions, this.batch.batchCode).subscribe(
       (result) => {
         console.log(result);
+        this.batch.batchSessions = this.batch.batchSessions.map(batch => {
+          batch.triggerd = true;
+          return batch;
+        });
       }
     );
   }
@@ -53,5 +58,10 @@ export class QrGenerateScreenComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  back() {
+    this.location.back();
+  }
+
 
 }

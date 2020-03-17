@@ -4,6 +4,7 @@ import { Employee } from '../model/employee';
 import { Observable, Observer } from 'rxjs';
 import { BatchSession } from '../model/batch-session';
 import { Batch } from '../model/batch';
+import { SERVER_URL } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,17 +25,17 @@ export class EmployeeService {
   }
 
   login(employee: Employee): Observable<Employee> {
-    return this.httpClient.post<Employee>('http://localhost:8800/login/faculty', employee);
+    return this.httpClient.post<Employee>( SERVER_URL + '/login/faculty', employee);
   }
 
   getBatchesByFaculty(empCode: string): Observable<Batch[]> {
-    return this.httpClient.get<Batch[]>('http://localhost:8800/faculty/' + empCode + '/batches');
+    return this.httpClient.get<Batch[]>( SERVER_URL + '/faculty/' + empCode + '/batches');
   }
 
   activate(batchSessions: BatchSession[], batchCode: string ): Observable<boolean> {
     console.log(batchSessions);
-    return this.httpClient.post<boolean>('http://localhost:8800/faculty/activate', batchSessions,{
-      params:{
+    return this.httpClient.post<boolean>( SERVER_URL + '/faculty/activate', batchSessions,{
+      params: {
         batchCode: batchCode
       }
     });

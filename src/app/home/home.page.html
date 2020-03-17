@@ -12,7 +12,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12" class='text-center'>
-           Today Batches
+          Today Batches
         </ion-col>
       </ion-row>
       <ion-row>
@@ -26,8 +26,9 @@
       <span *ngFor="let batch of batches">
         <ion-row *ngIf="batch.batchSessions.length>0 && !batch.batchSessions[0].triggerd">
           <ion-col size="5" class='text-center'>{{batch.batchCode}}</ion-col>
-          <ion-col class='text-center'><a [routerLink]="['/generate']" [queryParams]="{'batchCode': batch.batchCode}" routerLinkActive="router-link-active" class='btn btn-primary'>Generate
-          </a></ion-col>
+          <ion-col class='text-center'><a [routerLink]="['/generate']" [queryParams]="{'batchCode': batch.batchCode}"
+              routerLinkActive="router-link-active" class='btn btn-primary'>Generate
+            </a></ion-col>
         </ion-row>
       </span>
     </ion-grid>
@@ -35,7 +36,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12" class='text-center'>
-           Today Batches
+          Today Batches
         </ion-col>
       </ion-row>
       <ion-row>
@@ -57,5 +58,5 @@
   </div>
 
 
-  
+
 </ion-content>

@@ -20,7 +20,11 @@ export class SigninComponent {
     this.employeeService.login(this.employee).subscribe(
       (data) => {
         this.router.navigate(['/home/qrscreen'], { queryParams: { empCode: data.empCode }});
+      },
+      (error) => {
+        console.log(error);
+        alert('invalid credentails');
       }
-    )
+    );
   }
 }
